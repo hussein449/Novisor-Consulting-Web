@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* Brand tokens — taken from design/novisor-logo-final.html */
+@theme {
+  --font-sans: "Poppins", Montserrat, "Segoe UI", Arial, sans-serif;
+
+  --color-ink: #0e1428; /* Ink Navy — primary */
+  --color-ink-soft: #131a31;
+  --color-ink-raised: #1b2442;
+  --color-spark: #22d3ee; /* Cyan accent */
+  --color-spark-deep: #0b7c90; /* cyan for small text on light backgrounds (4.6:1) */
+  --color-spark-blue: #2563eb;
+  --color-muted: #8a94a6; /* Slate Gray — captions */
+  --color-body: #4a5468; /* readable body copy on light backgrounds */
+  --color-mist: #8ca0b3; /* captions on navy */
+  --color-fog: #d5dee8; /* body copy on navy */
+  --color-cloud: #f7f9fc; /* page background */
+  --color-cloud-deep: #eef1f6;
+  --color-snow: #f2f6fa; /* text on navy */
+  --color-line: #e3e8ef;
+  --color-line-strong: #d5dce6;
+  /* Status tones for illustrations only, matched to the cyan's lightness */
+  --color-alert: #ef6f61;
+  --color-alert-deep: #b9473b;
+  --color-warn: #f2b544;
+  --color-warn-deep: #94650b;
+
+  --shadow-card: 0 1px 2px rgb(16 20 40 / 0.04), 0 6px 20px rgb(16 20 40 / 0.05);
+
+  --animate-rise: rise 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-pop: pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-fade: fade 0.25s ease-out both;
+  --animate-bob: bob 1.2s ease-in-out infinite;
+  --animate-flow: flow 1.4s linear infinite;
+  --animate-caret-out: caret-out 1.6s linear forwards;
+  --animate-marquee: marquee 42s linear infinite;
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes bob {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-3px); opacity: 1; }
+  }
+  /* Caret blinks twice after typing finishes, then disappears for good. */
+  @keyframes caret-out {
+    0%, 24% { opacity: 1; }
+    25%, 49% { opacity: 0; }
+    50%, 74% { opacity: 1; }
+    75%, 100% { opacity: 0; }
+  }
+  /* The logo list is rendered twice; shift by one copy (half the track plus half the 20px gap) for a seamless loop. */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 10px)); }
+  }
+  @keyframes flow {
+    0% { top: -6px; opacity: 0; }
+    20%, 80% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-cloud font-sans text-ink;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p, li {
+    text-wrap: pretty;
+  }
+  ::selection {
+    @apply bg-spark text-ink;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-spark-deep;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

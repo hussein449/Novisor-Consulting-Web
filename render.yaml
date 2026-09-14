@@ -1,0 +1,15 @@
+# Render Blueprint: deploys this folder as a static site.
+services:
+  - name: novisor-website
+    type: web
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+    routes:
+      # Single-page app: send every path (e.g. /about, /use-cases) to index.html so direct links work.
+      - type: rewrite
+        source: /*
+        destination: /index.html
