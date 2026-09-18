@@ -81,7 +81,7 @@ export default function UseCasesPage() {
       <PageHeader
         label="Use cases"
         title="What we built, and what changed after."
-        intro="Six projects for teams in Lebanon. Pick a company to see the problem, what we built and a before and after. The illustrations are simplified and never show client data."
+        intro="Six projects for teams in Lebanon. Pick a company to see the problem, what we built and a before and after."
       />
 
       <div ref={barRef} className="sticky top-[72px] z-30 border-y border-line bg-cloud/95 backdrop-blur">
