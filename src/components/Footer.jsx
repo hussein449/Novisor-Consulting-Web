@@ -3,6 +3,8 @@ import Logo from './Logo.jsx'
 import { navLinks, site } from '../data/site.js'
 
 const buildLinks = [
+  { label: 'After-hours replies', to: '/services#after-hours' },
+  { label: 'AI voice agents', to: '/services#voice-agents' },
   { label: 'Novi for support', to: '/what-we-build' },
   { label: 'Novi for leads', to: '/what-we-build' },
   { label: 'Lead extraction', to: '/what-we-build#services' },

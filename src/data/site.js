@@ -18,5 +18,6 @@ export const navLinks = [
   { label: 'Industries', to: '/industries' },
   { label: 'Use cases', to: '/use-cases' },
   { label: 'About us', to: '/about' },
+  { label: 'Services', to: '/services' },
   { label: 'Contact', to: '/contact' },
 ]
